@@ -34,8 +34,7 @@ CREATE TABLE contact_instance(
     astronaut_id INTEGER NOT NULL REFERENCES astronaut(astronaut_id),
     monolith_id INTEGER NOT NULL REFERENCES monolith (monolith_id),
     place_id INTEGER NOT NULL REFERENCES place(place_id),
-    contact_date DATE NOT NULL,
-    contact_time TIME NOT NULL,
+    contact_datetime TIMESTAMP NOT NULL,
     contact_type CHAR(80) NOT NULL
 );
 
@@ -44,8 +43,7 @@ CREATE TABLE inspection_instance(
     monolith_id INT NOT NULL REFERENCES monolith (monolith_id),
     place_id INT NOT NULL REFERENCES place(place_id),
     ocular_id INT NOT NULL REFERENCES ocular(ocular_id),
-    inspection_date DATE NOT NULL,
-    inspection_time TIME NOT NULL
+    inspection_datetime TIMESTAMP NOT NULL
 );
 
 INSERT INTO place(
@@ -77,11 +75,10 @@ INSERT INTO contact_instance(
                              astronaut_id,
                              monolith_id,
                              place_id,
-                             contact_date,
-                             contact_time,
+                             contact_datetime,
                              contact_type
-) VALUES (1, 1, 1, '12.12.2096', '12:00', 'in scafander' ),
-         (1, 1, 3, '12.02.2098', '13:00','barehanded');
+) VALUES (1, 1, 1, '12.12.2096 12:00', 'in scafander' ),
+         (1, 1, 3, '12.02.2098 13:00', 'barehanded');
 
 
 INSERT INTO inspection_instance(
@@ -89,6 +86,5 @@ INSERT INTO inspection_instance(
                                 monolith_id,
                                 place_id,
                                 ocular_id,
-                                inspection_date,
-                                inspection_time
-) VALUES (1, 1, 2, 1, '11.03.2099', '15:00')
+                                inspection_datetime
+) VALUES (1, 1, 2, 1, '11.03.2099 15:00')
